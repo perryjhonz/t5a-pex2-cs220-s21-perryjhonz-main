@@ -47,5 +47,4 @@ void bubbleSort(int array[], int N);
  */
 void mergeSort(int array[], int N);
 
-
-#endif //PEX2SORTS_H
+#endif  // PEX2SORTS_H
