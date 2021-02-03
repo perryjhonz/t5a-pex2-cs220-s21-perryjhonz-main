@@ -8,8 +8,6 @@
  * =========================================================== */
 #ifndef PEX2SORTS_H
 #define PEX2SORTS_H
-#include <stdio.h>
-#include <stdlib.h>
 
 /** -------------------------------------------------------------------
  * @brief Perform an selection sort on an array
