@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 // Selection Sort
 void selectionSort(int array[], int N) {
@@ -66,5 +67,74 @@ void bubbleSort(int array[], int N) {
                 array[j + 1] = temp;
             }
         }
+    }
+}
+
+/**
+ * @brief Given two sorted sublists array[lBound..mid] and array[mid+1..rBound],
+ * merge them into a single sorted list in array[lBound..rBound]
+ * @param array - the array to sort
+ * @param lBound - the lowest index of the first sublist
+ * @param mid - the highest index of the first sublist
+ * @param rBound - the highest index of the second sublist
+ */
+void merge(int array[], int lBound, int mid, int rBound) {
+    // Create temporary array mergedNumbers
+    // Initialize position variables
+    int mergePos = 0;
+    int leftPos = 0;
+    int rightPos = 0;
+    int mergedSize = rBound - lBound + 1;
+    int *mergedNumbers = (int *)malloc(sizeof(int) * mergedSize);
+
+    leftPos = lBound;
+    rightPos = mid + 1;
+
+    while (leftPos <= mid && rightPos <= rBound) {
+        if (array[leftPos] <= array[rightPos]) {
+            mergedNumbers[mergePos] = array[leftPos];
+            ++leftPos;
+        } else {
+            mergedNumbers[mergePos] = array[rightPos];
+            ++rightPos;
+        }
+        ++mergePos;
+    }
+
+    // If left partition not empty, add remaining elements
+    while (leftPos <= mid) {
+        mergedNumbers[mergePos] = array[leftPos];
+        ++leftPos;
+        ++mergePos;
+    }
+
+    // If right partition not empty, add remaining elements
+    while (rightPos <= rBound) {
+        mergedNumbers[mergePos] = array[rightPos];
+        ++rightPos;
+        ++mergePos;
+    }
+
+    // Copy merge number back to array
+    for (mergePos = 0; mergePos < mergedSize; ++mergePos) {
+        array[lBound + mergePos] = mergedNumbers[mergePos];
+    }
+}
+
+// Merge Sort
+void mergeSort(int array[], int N) {
+    int j = 0;
+    int lBound = N;
+    int rBound = N;
+
+    if (lBound < rBound) {
+        j = (lBound + rBound) / 2;  // Find the midpoint in the partition
+
+        // Recursively sort left and right partitions
+        mergeSort(array, lBound, j);
+        mergeSort(array, j + 1, rBound);
+
+        // Merge left and right partition in sorted order
+        merge(array, lBound, j, rBound);
     }
 }
