@@ -39,12 +39,21 @@ void bubbleSort(int array[], int N);
 /** -------------------------------------------------------------------
  * @brief Perform a mergesort on a portion of an array, from lBound
  * to rBound
+ * @param array - the array to sort
+ * @param N - the size of the array 
+ * @post array is sorted
+ */
+void mergeSort(int array[], int N);
+
+/** -------------------------------------------------------------------
+ * @brief Perform a mergesort on a portion of an array, from lBound
+ * to rBound
  * @param numbers - the array to sort
  * @param lBound - the starting index of the sublist to sort
  * @param rBound - the ending index of the sublist to sort
  * @pre parameters are populated with proper values
  * @post array is sorted
  */
-void mergeSort(int array[], int N);
+void sergeMort(int array[], int lBound, int rBound);
 
 #endif  // PEX2SORTS_H

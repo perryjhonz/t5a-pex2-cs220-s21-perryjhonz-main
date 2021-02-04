@@ -123,16 +123,22 @@ void merge(int array[], int lBound, int mid, int rBound) {
 
 // Merge Sort
 void mergeSort(int array[], int N) {
+    int lBound = 0;
+    int rBound = N - 1;
+
+    sergeMort(array, lBound, rBound);
+}
+
+// Serge Mort
+void sergeMort(int array[], int lBound, int rBound) {
     int j = 0;
-    int lBound = N;
-    int rBound = N;
 
     if (lBound < rBound) {
         j = (lBound + rBound) / 2;  // Find the midpoint in the partition
 
         // Recursively sort left and right partitions
-        mergeSort(array, lBound, j);
-        mergeSort(array, j + 1, rBound);
+        sergeMort(array, lBound, j);
+        sergeMort(array, j + 1, rBound);
 
         // Merge left and right partition in sorted order
         merge(array, lBound, j, rBound);
