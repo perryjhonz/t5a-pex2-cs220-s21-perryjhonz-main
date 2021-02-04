@@ -4,7 +4,9 @@
  * Section: T5
  * Project: PEX2
  * Purpose: Sorting algoritms
- * Documentation:
+ * Documentation: C3C Garbrecht helped me identify what specific variable
+ * needed to be switch in order for the function to work. All work was my own.
+ * No additional help was received.
  * =========================================================== */
 #ifndef PEX2SORTS_H
 #define PEX2SORTS_H
