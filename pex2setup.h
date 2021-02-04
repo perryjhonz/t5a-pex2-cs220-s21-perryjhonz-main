@@ -5,8 +5,8 @@
  * Project: PEX2
  * Purpose: Sorting algoritms
  * =========================================================== */
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef PEX2SETUP_H
+#define PEX2SETUP_H
 
 /**
  * @brief Tests whether the list is sorted in ascending order or not
@@ -36,3 +36,5 @@ int *generateRandomArray(int size);
  * @post numbers are displayed to the screen
  */
 void printArray(int numbers[], int length);
+
+#endif // PEX2SETUP_H

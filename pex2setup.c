@@ -8,6 +8,8 @@
 
 #include "pex2setup.h"
 
+#include <stdio.h>
+#include <stdlib.h>
 /**
  * @brief Tests whether the list is sorted in ascending order or not
  * @param numbers the list of numbers
