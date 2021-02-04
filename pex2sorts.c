@@ -16,22 +16,22 @@
 void selectionSort(int array[], int N) {
     int i = 0;
     int j = 0;
-    int indexSmallest = 0;
+    int indexLargest = 0;
     int temp = 0;  // Temporary variable for swap
 
     for (i = 0; i < N - 1; ++i) {
         // Find index of smallest remaining element
-        indexSmallest = i;
+        indexLargest = i;
         for (j = i + 1; j < N; ++j) {
-            if (array[j] < array[indexSmallest]) {
-                indexSmallest = j;
+            if (array[j] > array[indexLargest]) {
+                indexLargest = j;
             }
         }
 
-        // Swap array[i] and array[indexSmallest]
+        // Swap array[i] and array[indexLargest]
         temp = array[i];
-        array[i] = array[indexSmallest];
-        array[indexSmallest] = temp;
+        array[i] = array[indexLargest];
+        array[indexLargest] = temp;
     }
 }
 
@@ -39,21 +39,19 @@ void selectionSort(int array[], int N) {
 void insertionSort(int array[], int N) {
     int i = 0;
     int j = 0;
-    int indexSmallest = 0;
     int temp = 0;  // Temporary variable for swap
-    for (i = 0; i < N - 1; ++i) {
-        // Find index of smallest remaining element
-        indexSmallest = i;
-        for (j = i + 1; j < N; ++j) {
-            if (array[j] < array[indexSmallest]) {
-                indexSmallest = j;
-            }
-        }
 
-        // Swap array[i] and array[indexSmallest]
-        temp = array[i];
-        array[i] = array[indexSmallest];
-        array[indexSmallest] = temp;
+    for (i = 1; i < N; ++i) {
+        j = i;
+        // Insert array[i] into sorted part
+        // stopping once array[i] in correct position
+        while (j > 0 && array[j] > array[j - 1]) {
+            // Swap array[j] and array[j - 1]
+            temp = array[j];
+            array[j] = array[j - 1];
+            array[j - 1] = temp;
+            --j;
+        }
     }
 }
 
@@ -61,7 +59,7 @@ void insertionSort(int array[], int N) {
 void bubbleSort(int array[], int N) {
     for (int i = 0; i < N - 1; i++) {
         for (int j = 0; j < N - i - 1; j++) {
-            if (array[j] > array[j + 1]) {
+            if (array[j] < array[j + 1]) {
                 int temp = array[j];
                 array[j] = array[j + 1];
                 array[j + 1] = temp;
@@ -91,7 +89,7 @@ void merge(int array[], int lBound, int mid, int rBound) {
     rightPos = mid + 1;
 
     while (leftPos <= mid && rightPos <= rBound) {
-        if (array[leftPos] <= array[rightPos]) {
+        if (array[leftPos] >= array[rightPos]) {
             mergedNumbers[mergePos] = array[leftPos];
             ++leftPos;
         } else {
